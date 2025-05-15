@@ -1007,11 +1007,13 @@ fn handle_init(args: &InitCmdArgs) -> anyhow::Result<LocalEnv> {
                     let pageserver_id = NodeId(DEFAULT_PAGESERVER_ID.0 + i as u64);
                     let pg_port = DEFAULT_PAGESERVER_PG_PORT + i;
                     let http_port = DEFAULT_PAGESERVER_HTTP_PORT + i;
+                    let grpc_port = 51051 + i; // 50051 taken by storage-broker
                     NeonLocalInitPageserverConf {
                         id: pageserver_id,
                         listen_pg_addr: format!("127.0.0.1:{pg_port}"),
                         listen_http_addr: format!("127.0.0.1:{http_port}"),
                         listen_https_addr: None,
+                        listen_grpc_addr: Some(format!("127.0.0.1:{grpc_port}")),
                         pg_auth_type: AuthType::Trust,
                         http_auth_type: AuthType::Trust,
                         other: Default::default(),

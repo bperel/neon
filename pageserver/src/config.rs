@@ -58,6 +58,8 @@ pub struct PageServerConf {
     pub listen_http_addr: String,
     /// Example: 127.0.0.1:9899
     pub listen_https_addr: Option<String>,
+    /// Example: 127.0.0.1:50051
+    pub listen_grpc_addr: Option<String>,
 
     /// Path to a file with certificate's private key for https API.
     /// Default: server.key
@@ -349,6 +351,7 @@ impl PageServerConf {
             listen_pg_addr,
             listen_http_addr,
             listen_https_addr,
+            listen_grpc_addr,
             ssl_key_file,
             ssl_cert_file,
             ssl_cert_reload_period,
@@ -416,6 +419,7 @@ impl PageServerConf {
             listen_pg_addr,
             listen_http_addr,
             listen_https_addr,
+            listen_grpc_addr,
             ssl_key_file,
             ssl_cert_file,
             ssl_cert_reload_period,

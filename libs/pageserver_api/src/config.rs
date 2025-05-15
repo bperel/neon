@@ -104,6 +104,7 @@ pub struct ConfigToml {
     pub listen_pg_addr: String,
     pub listen_http_addr: String,
     pub listen_https_addr: Option<String>,
+    pub listen_grpc_addr: Option<String>,
     pub ssl_key_file: Utf8PathBuf,
     pub ssl_cert_file: Utf8PathBuf,
     #[serde(with = "humantime_serde")]
@@ -558,6 +559,7 @@ impl Default for ConfigToml {
             listen_pg_addr: (DEFAULT_PG_LISTEN_ADDR.to_string()),
             listen_http_addr: (DEFAULT_HTTP_LISTEN_ADDR.to_string()),
             listen_https_addr: (None),
+            listen_grpc_addr: None, // TODO: default to 127.0.0.1:50051
             ssl_key_file: Utf8PathBuf::from(DEFAULT_SSL_KEY_FILE),
             ssl_cert_file: Utf8PathBuf::from(DEFAULT_SSL_CERT_FILE),
             ssl_cert_reload_period: Duration::from_secs(60),
